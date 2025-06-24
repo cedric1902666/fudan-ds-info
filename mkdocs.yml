@@ -1,0 +1,26 @@
+site_name: 复旦大学大数据学院资料站
+site_description: '一个分享复旦大学大数据学院二手书和课程资料的网站'
+site_author: 'FDU DSers'
+
+theme:
+  name: material
+  language: zh
+  palette:
+    scheme: default
+    primary: indigo
+    accent: indigo
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+  icon:
+    repo: fontawesome/brands/github
+
+repo_url: https://github.com/your-username/your-repo-name # 记得替换成你的 GitHub 仓库地址
+repo_name: 'fudan-ds-info' # 记得替换成你的仓库名称
+
+nav:
+  - 首页: index.md
+  - 二手书资料: books.md
+  - 课程资料: 
+    - '所有课程': courses/index.md 
