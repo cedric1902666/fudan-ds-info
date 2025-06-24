@@ -16,11 +16,12 @@ theme:
   icon:
     repo: fontawesome/brands/github
 
-repo_url: https://github.com/your-username/your-repo-name # 记得替换成你的 GitHub 仓库地址
-repo_name: 'fudan-ds-info' # 记得替换成你的仓库名称
+repo_url: https://github.com/cedric1902666/fudan-ds-info
+repo_name: 'cedric1902666/fudan-ds-info'
 
 nav:
   - 首页: index.md
+  - 关于本站: about.md
   - 二手书资料: books.md
   - 课程资料: 
     - '所有课程': courses/index.md 
