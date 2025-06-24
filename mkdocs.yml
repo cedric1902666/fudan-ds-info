@@ -1,4 +1,4 @@
-site_name: 复旦大学大数据学院资料站
+site_name: fdu的ds小窝
 site_description: '一个分享复旦大学大数据学院二手书和课程资料的网站'
 site_author: 'FDU DSers'
 
@@ -13,6 +13,7 @@ theme:
     - navigation.tabs
     - navigation.sections
     - navigation.top
+    - comments
   icon:
     repo: fontawesome/brands/github
 
@@ -40,4 +41,9 @@ nav:
     - '计算机原理': courses/data130025-ji-suan-ji-yuan-li.md
     - '计算理论': courses/data130031-ji-suan-li-lun.md
     - '高等线性代数': courses/data130042-gao-deng-xian-xing-dai-shu.md
-    - '多元统计分析': courses/data130044-duo-yuan-tong-ji-fen-xi.md 
+    - '多元统计分析': courses/data130044-duo-yuan-tong-ji-fen-xi.md
+
+extra:
+  giscus:
+    repo: cedric1902666/fudan-ds-info
+    category: Comments
