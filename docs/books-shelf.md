@@ -4,4 +4,4 @@
 
 <div id="bookshelf"></div>
 
-<script src="bookshelf.js"></script> 
+<script src="/bookshelf.js"></script> 
