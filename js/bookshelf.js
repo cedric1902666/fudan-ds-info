@@ -307,7 +307,7 @@ function showSuccessToast(message) {
 
 // 主流程
 window.addEventListener('DOMContentLoaded', () => {
-  fetch('/库存.csv')
+  fetch('../库存.csv')
     .then(res => res.text())
     .then(csv => {
       const books = parseCSV(csv);
