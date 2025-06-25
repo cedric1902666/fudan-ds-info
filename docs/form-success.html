@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Submitted</title>
+    <script>
+        window.onload = function() {
+            // 向父窗口发送消息，通知提交成功
+            // 为了安全，理想情况下 'https://cedric1902666.github.io' 应替换为你的实际域名
+            window.parent.postMessage('form-submitted-successfully', '*');
+        };
+    </script>
+</head>
+<body>
+    <p>Submitting, please wait...</p>
+</body>
+</html> 
