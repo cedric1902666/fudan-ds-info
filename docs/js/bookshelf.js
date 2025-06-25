@@ -58,7 +58,7 @@ function renderBooks(books) {
   container.style.paddingRight = '0';
 
   container.innerHTML = books.map(book => {
-    const imgSrc = book['图片'] ? `/images/${book['图片']}` : 'https://via.placeholder.com/340x340?text=No+Image';
+    const imgSrc = book['图片'] ? `../images/${book['图片']}` : 'https://via.placeholder.com/340x340?text=No+Image';
     const tagColor = getTagColor(book['课程类型']);
     return `
       <div class="book-card" style="
@@ -131,12 +131,12 @@ function showDetailModal(bookid) {
     modal.onclick = function(e) { if (e.target === modal) modal.remove(); };
     document.body.appendChild(modal);
 
-    const imgSrc = book['图片'] ? `/images/${book['图片']}` : 'https://via.placeholder.com/340x340?text=No+Image';
+    const imgSrc = book['图片'] ? `../images/${book['图片']}` : 'https://via.placeholder.com/340x340?text=No+Image';
 
     const modalContentContainer = document.createElement('div');
     modalContentContainer.style.background = '#fff';
     modalContentContainer.style.borderRadius = '24px';
-    modalContentContainer.style.maxWidth = '700px';
+    modalContentContainer.style.maxWidth = '960px';
     modalContentContainer.style.width = '96vw';
     modalContentContainer.style.padding = '0 0 32px 0';
     modalContentContainer.style.boxShadow = '0 12px 48px 0 rgba(60,60,60,0.16)';
@@ -188,44 +188,43 @@ function renderDetailView(bookid) {
     `;
 }
 
-// 渲染确认页和表单
+// 渲染确认页和表单 - 改为左右布局
 function renderConfirmationView(bookid) {
     const container = document.getElementById('modal-content-area');
     if (!container) return;
     const book = (window._allBooks || []).find(b => b['bookid'] == bookid);
     if (!book) return;
 
-    const formUrl = `https://noteforms.com/forms/zfr0mm?书籍=${encodeURIComponent(book['书名']||'')}`;
+    // 假设表单字段名为 "BOOKID"，根据截图推断
+    const formUrl = `https://noteforms.com/forms/zfr0mm?书籍=${encodeURIComponent(book['书名']||'')}&BOOKID=${book['bookid']||''}`;
+    
+    // 调整弹窗内边距以适应新布局
+    container.style.padding = '32px 36px 0 36px';
+
     container.innerHTML = `
-        <h2 style="font-size: 1.5rem; font-weight: 800; color: #222; margin-bottom: 24px;">确认索书信息</h2>
-        <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 12px; padding: 24px; text-align: left; margin: 0 auto 24px auto; line-height: 2; font-size: 1.6em; max-width: 520px; color:#333;">
-          <p><b>书名：</b><span style="color: #4f46e5; font-weight: 600;">${book['书名']||''}</span></p>
-          <p><b>BookID：</b>${book['bookid']||''}</p>
-          <p><b>作者：</b>${book['Authors/Editors']||''}</p>
-          <p><b>课程类型：</b>${book['课程类型']||'未分类'}</p>
-          <p><b>备注：</b>${book['备注信息']||''}</p>
-        </div>
-        <div style="background: #fff5f5; color: #c53030; border: 1px solid #f56565; border-radius: 8px; padding: 16px; margin: 0 auto 24px auto; max-width: 520px; font-weight: 600; font-size: 1.1em;">
-          注意：30天内该类型书籍仅能索取一本。
-        </div>
-        <div id="form-embed-container-${book.bookid}" style="display: none; margin-top: 24px;">
-          <iframe src="${formUrl}" style="width: 100%; height: 320px; border: 1px solid #ddd; border-radius: 12px;"></iframe>
-        </div>
-        <div style="display: flex; justify-content: center; gap: 20px; margin-top: 24px;" id="confirmation-buttons-${book.bookid}">
-          <button onclick="embedForm('${book.bookid}')" style="background:#4f46e5;color:white;border:none;padding:12px 24px;border-radius:8px;font-size:1.1em;font-weight:600;cursor:pointer;">确认并填写表单</button>
-          <button onclick="renderDetailView('${bookid}')" style="background:#f3f4f6;color:#333;border:1px solid #ddd;padding:12px 24px;border-radius:8px;font-size:1.1em;font-weight:600;cursor:pointer;">返回</button>
+        <h2 style="font-size: 1.5rem; font-weight: 800; color: #222; margin-bottom: 24px; width: 100%; text-align: center;">确认索书信息</h2>
+        <div style="display: flex; gap: 36px; align-items: flex-start; width: 100%;">
+            <!-- Left Column: Book Info -->
+            <div style="flex: 1; min-width: 0;">
+                <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 12px; padding: 24px; text-align: left; margin: 0 0 24px 0; line-height: 1.8; font-size: 1em;">
+                  <p style="margin:0 0 12px 0;"><b>书名：</b><span style="color: #4f46e5; font-weight: 600;">${book['书名']||''}</span></p>
+                  <p style="margin:0 0 12px 0;"><b>BookID：</b>${book['bookid']||''}</p>
+                  <p style="margin:0 0 12px 0;"><b>作者：</b>${book['Authors/Editors']||''}</p>
+                  <p style="margin:0 0 12px 0;"><b>课程类型：</b>${book['课程类型']||'未分类'}</p>
+                  <p style="margin:0;"><b>备注：</b>${book['备注信息']||''}</p>
+                </div>
+                <div style="background: #fff5f5; color: #c53030; border: 1px solid #f56565; border-radius: 8px; padding: 16px; margin: 0; font-weight: 600; font-size: 0.9em; line-height:1.5;">
+                  注意：30天内该类型书籍仅能索取一本。
+                </div>
+                <button onclick="renderDetailView('${bookid}')" style="background:#f3f4f6;color:#333;border:1px solid #ddd;padding:12px 24px;border-radius:8px;font-size:1em;font-weight:600;cursor:pointer; margin-top: 24px; width: 100%;">返回</button>
+            </div>
+
+            <!-- Right Column: Form -->
+            <div style="flex: 1.2; min-width: 0;">
+                <iframe src="${formUrl}" style="width: 100%; height: 500px; border: 1px solid #ddd; border-radius: 12px;"></iframe>
+            </div>
         </div>
     `;
-}
-
-// 嵌入表单
-function embedForm(bookid) {
-    const formContainer = document.getElementById(`form-embed-container-${bookid}`);
-    const buttonsContainer = document.getElementById(`confirmation-buttons-${bookid}`);
-    if (formContainer) formContainer.style.display = 'block';
-    if (buttonsContainer) {
-        buttonsContainer.querySelector('button:first-child').style.display = 'none';
-    }
 }
 
 // 渲染tag筛选区
