@@ -24,7 +24,6 @@ repo_name: 'cedric1902666/fudan-ds-info'
 nav:
   - 首页: index.md
   - 关于本站: about.md
-  - 二手书资料: books.md
   - 二手书货架: books-shelf.md
   - 课程资料: 
     - '所有课程': courses/index.md
