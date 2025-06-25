@@ -44,6 +44,9 @@ nav:
     - '高等线性代数': courses/data130042-gao-deng-xian-xing-dai-shu.md
     - '多元统计分析': courses/data130044-duo-yuan-tong-ji-fen-xi.md
 
+extra_javascript:
+  - js/bookshelf.js
+
 extra:
   giscus:
     repo: cedric1902666/fudan-ds-info
