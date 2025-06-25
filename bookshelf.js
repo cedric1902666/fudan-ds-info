@@ -16,14 +16,13 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(res => res.text())
     .then(csv => {
       const books = parseCSV(csv);
-      // 只展示"可索书"状态的书（适配中文字段名"状态"）
-      const availableBooks = books.filter(b => !b['状态'] || b['状态'] === '可索书');
+      // 不筛选，直接展示所有书籍
       const container = document.getElementById('bookshelf');
-      if (availableBooks.length === 0) {
-        container.innerHTML = '<p>暂无可索取的书籍。</p>';
+      if (books.length === 0) {
+        container.innerHTML = '<p>暂无书籍数据。</p>';
         return;
       }
-      container.innerHTML = availableBooks.map(book => `
+      container.innerHTML = books.map(book => `
         <div class="book-card" style="border:1px solid #eee;padding:16px;margin:16px 0;border-radius:8px;box-shadow:0 2px 8px #eee;">
           <h3>${book['书名']||''}</h3>
           <p><b>作者：</b>${book['Authors/Editors']||''}</p>
