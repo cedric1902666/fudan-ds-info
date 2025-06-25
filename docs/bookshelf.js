@@ -12,7 +12,7 @@ function parseCSV(text) {
 
 // 渲染书籍卡片
 document.addEventListener('DOMContentLoaded', () => {
-  fetch('库存.csv')
+  fetch('stock.csv')
     .then(res => res.text())
     .then(csv => {
       const books = parseCSV(csv);
