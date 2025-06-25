@@ -848,10 +848,20 @@
   </div>
 
   <div style="text-align:left;">
-    <span style="color: #888; font-size: 0.98em; font-style: italic;">
-      注：图书信息为图像识别结果，可能与实际不符，请以图片信息为主
-    </span>
+  <span style="color: #888; font-size: 0.98em; font-style: italic;">
+    注1：图书信息为图像识别结果，可能与实际不符，请以图片信息为主。
+    <br>
+    注2：你也想无偿送出闲置书籍？<a href="javascript:void(0);" onclick="document.getElementById('qrcode-modal').style.display='flex';" style="color:#2563eb;text-decoration:underline;cursor:pointer;">请点此处，联系群主</a>
+  </span>
+</div>
+<!-- 二维码弹窗 -->
+<div id="qrcode-modal" style="display:none; position:fixed; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.18); align-items:center; justify-content:center; z-index:9999;">
+  <div style="background:#fff; border-radius:18px; padding:24px 24px 12px 24px; box-shadow:0 8px 32px 0 rgba(60,60,60,0.18); text-align:center; position:relative;">
+    <span style="position:absolute;top:8px;right:18px;font-size:2rem;cursor:pointer;color:#888;" onclick="document.getElementById('qrcode-modal').style.display='none'">×</span>
+    <div style="font-size:1.1em; margin-bottom:12px; color:#222;">扫码加群联系群主</div>
+    <img src="/images/QR-code.Png" alt="群二维码" style="width:220px;max-width:60vw; border-radius:12px;">
   </div>
+</div>
 </div>
 <div id="bookshelf"></div>
 
