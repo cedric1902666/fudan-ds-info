@@ -58,7 +58,7 @@ function renderBooks(books) {
   container.style.paddingRight = '0';
 
   container.innerHTML = books.map(book => {
-    const imgSrc = book['图片'] ? `/images/${book['图片']}` : 'https://via.placeholder.com/340x340?text=No+Image';
+    const imgSrc = book['图片'] ? `../images/${book['图片']}` : 'https://via.placeholder.com/340x340?text=No+Image';
     const tagColor = getTagColor(book['课程类型']);
     return `
       <div class="book-card" style="
@@ -131,7 +131,7 @@ function showDetailModal(bookid) {
     modal.onclick = function(e) { if (e.target === modal) modal.remove(); };
     document.body.appendChild(modal);
 
-    const imgSrc = book['图片'] ? `/images/${book['图片']}` : 'https://via.placeholder.com/340x340?text=No+Image';
+    const imgSrc = book['图片'] ? `../images/${book['图片']}` : 'https://via.placeholder.com/340x340?text=No+Image';
 
     const modalContentContainer = document.createElement('div');
     modalContentContainer.style.background = '#fff';
