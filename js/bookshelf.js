@@ -278,7 +278,7 @@ function renderConfirmationView(bookid) {
                   <p style="margin:0;"><b>备注：</b>${book['备注信息']||''}</p>
                 </div>
                 <div style="background: #fff5f5; color: #c53030; border: 1px solid #f56565; border-radius: 8px; padding: 16px; margin: 0; font-weight: 600; font-size: 0.9em; line-height:1.5;">
-                  注意：30天内该类型书籍仅能索取一本。
+                  注意：每位同学在7天内限领4本教材！
                 </div>
                 <button onclick="renderDetailView('${bookid}')" style="background:#f3f4f6;color:#333;border:1px solid #ddd;padding:12px 24px;border-radius:8px;font-size:1em;font-weight:600;cursor:pointer; margin-top: 24px; width: 100%;">返回</button>
             </div>
