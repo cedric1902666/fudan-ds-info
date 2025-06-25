@@ -31,7 +31,7 @@ hide:
   <div style="background:#fff; border-radius:18px; padding:24px 24px 12px 24px; box-shadow:0 8px 32px 0 rgba(60,60,60,0.18); text-align:center; position:relative;">
     <span style="position:absolute;top:8px;right:18px;font-size:2rem;cursor:pointer;color:#888;" onclick="document.getElementById('qrcode-modal').style.display='none'">×</span>
     <div style="font-size:1.1em; margin-bottom:12px; color:#222;">扫码加群联系群主</div>
-    <img src="/images/QR-code.Png" alt="群二维码" style="width:220px;max-width:60vw; border-radius:12px;">
+    <img src="../images/QR-code.Png" alt="群二维码" style="width:220px;max-width:60vw; border-radius:12px;">
   </div>
 </div>
 </div>

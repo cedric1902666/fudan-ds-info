@@ -24,7 +24,7 @@ repo_name: 'cedric1902666/fudan-ds-info'
 nav:
   - 首页: index.md
   - 二手书货架: books-shelf.md
-  - 课程资料: 
+  - 课程园地: 
     - '所有课程': courses/index.md
     - '走近人工智能': courses/aib110003-zou-jin-ren-gong-zhi-neng.md
     - '本科生科研实践': courses/comp130194-ben-ke-sheng-ke-yan-shi-jian.md
