@@ -1,5 +1,5 @@
-site_name: fdu的ds小窝
-site_description: '一个分享复旦大学大数据学院二手书和课程资料的网站'
+site_name: DS - Hole
+site_description: '一个主要面向ds学子的服务小站'
 site_author: 'FDU DSers'
 
 theme:
@@ -23,7 +23,6 @@ repo_name: 'cedric1902666/fudan-ds-info'
 
 nav:
   - 首页: index.md
-  - 关于本站: about.md
   - 二手书货架: books-shelf.md
   - 课程资料: 
     - '所有课程': courses/index.md

@@ -38,6 +38,69 @@ function getTagColor(type) {
   };
 }
 
+// 辅助函数：注入响应式CSS
+function injectResponsiveCSS() {
+    const styleId = 'responsive-styles';
+    if (document.getElementById(styleId)) return;
+
+    const style = document.createElement('style');
+    style.id = styleId;
+    style.innerHTML = `
+        @media (max-width: 768px) {
+            #bookshelf {
+                gap: 24px !important;
+                padding: 24px 16px !important;
+            }
+            .book-card {
+                flex-basis: 100% !important; /* On mobile, one card per row */
+                max-width: 400px !important; /* Limit max width on mobile */
+            }
+            
+            .modal-content-container {
+                width: 95vw !important;
+                max-height: 90vh !important;
+                overflow-y: auto !important;
+                padding-bottom: 24px !important;
+            }
+            #modal-content-area {
+                padding: 24px 18px 0 18px !important;
+                word-wrap: break-word;
+                word-break: break-word;
+            }
+            #modal-content-area h2 {
+                font-size: 1.6rem !important;
+                margin-bottom: 12px !important;
+            }
+             #modal-content-area > span {
+                margin-bottom: 12px !important;
+            }
+            #modal-content-area > div[style*="margin: 18px"] {
+                 margin-top: 12px !important;
+                 font-size: 1.1em !important;
+            }
+
+            .confirmation-view-layout {
+                flex-direction: column !important;
+                gap: 24px !important;
+            }
+            .confirmation-view-layout iframe {
+                height: 450px !important;
+                min-height: 350px;
+            }
+
+            #tag-filter-bar {
+                gap: 10px !important;
+                padding: 0 10px !important;
+            }
+            .tag-filter-btn {
+                padding: 7px 16px !important;
+                font-size: 1em !important;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
 // 渲染首页卡片
 function renderBooks(books) {
   const container = document.getElementById('bookshelf');
@@ -134,6 +197,7 @@ function showDetailModal(bookid) {
     const imgSrc = book['图片'] ? `../images/${book['图片']}` : 'https://via.placeholder.com/340x340?text=No+Image';
 
     const modalContentContainer = document.createElement('div');
+    modalContentContainer.className = 'modal-content-container'; // 为响应式样式添加class
     modalContentContainer.style.background = '#fff';
     modalContentContainer.style.borderRadius = '24px';
     modalContentContainer.style.maxWidth = '960px';
@@ -203,7 +267,7 @@ function renderConfirmationView(bookid) {
 
     container.innerHTML = `
         <h2 style="font-size: 1.5rem; font-weight: 800; color: #222; margin-bottom: 24px; width: 100%; text-align: center;">确认索书信息</h2>
-        <div style="display: flex; gap: 36px; align-items: flex-start; width: 100%;">
+        <div class="confirmation-view-layout" style="display: flex; gap: 36px; align-items: flex-start; width: 100%;">
             <!-- Left Column: Book Info -->
             <div style="flex: 1; min-width: 0;">
                 <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 12px; padding: 24px; text-align: left; margin: 0 0 24px 0; line-height: 1.8; font-size: 1em;">
@@ -214,7 +278,7 @@ function renderConfirmationView(bookid) {
                   <p style="margin:0;"><b>备注：</b>${book['备注信息']||''}</p>
                 </div>
                 <div style="background: #fff5f5; color: #c53030; border: 1px solid #f56565; border-radius: 8px; padding: 16px; margin: 0; font-weight: 600; font-size: 0.9em; line-height:1.5;">
-                  注意：30天内该类型书籍仅能索取一本。
+                  注意：每位同学在7天内限领4本教材！
                 </div>
                 <button onclick="renderDetailView('${bookid}')" style="background:#f3f4f6;color:#333;border:1px solid #ddd;padding:12px 24px;border-radius:8px;font-size:1em;font-weight:600;cursor:pointer; margin-top: 24px; width: 100%;">返回</button>
             </div>
@@ -306,6 +370,7 @@ function showSuccessToast(message) {
 
 // 主流程
 window.addEventListener('DOMContentLoaded', () => {
+  injectResponsiveCSS();
   fetch('../库存.csv')
     .then(res => res.text())
     .then(csv => {
