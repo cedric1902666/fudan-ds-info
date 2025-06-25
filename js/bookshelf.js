@@ -64,6 +64,8 @@ function injectResponsiveCSS() {
             }
             #modal-content-area {
                 padding: 24px 18px 0 18px !important;
+                word-wrap: break-word;
+                word-break: break-word;
             }
             #modal-content-area h2 {
                 font-size: 1.6rem !important;
