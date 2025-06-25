@@ -8,7 +8,7 @@ hide:
 
 <div id="bookshelf"></div>
 
-<script src="../bookshelf.js"></script> 
+<script src="bookshelf.js"></script> 
 
 <style>
 .md-sidebar, .md-nav--secondary { display: none !important; }
